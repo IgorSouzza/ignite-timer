@@ -25,6 +25,8 @@ export function Countdown() {
   useEffect(() => {
     if (activeCycle) {
       document.title = `${minutes}:${seconds} - Ignite Timer`
+    } else {
+      document.title = `Ignite Timer`
     }
   }, [minutes, seconds, activeCycle])
 
@@ -35,7 +37,7 @@ export function Countdown() {
       interval = setInterval(() => {
         const secondsDifference = differenceInSeconds(
           new Date(),
-          activeCycle.startDate,
+          new Date(activeCycle.startDate),
         )
 
         if (secondsDifference >= totalSeconds) {
